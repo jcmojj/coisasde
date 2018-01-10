@@ -29,6 +29,13 @@ public class Paesci implements Serializable{
 		super();
 	}
 
+	public Paesci(String pais, String estado, String cidade) {
+		super();
+		this.cidade = cidade;
+		this.estado = estado;
+		this.pais = pais;
+	}
+
 	// getters and setters
 	public String getCidade() {
 		return cidade;
