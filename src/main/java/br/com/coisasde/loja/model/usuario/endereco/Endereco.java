@@ -29,6 +29,8 @@ public class Endereco implements Serializable {
 	private Paesci paesci;
 	@OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL) // ok
 	private Pessoa pessoa;
+//	@OneToMany(mappedBy = "endereco")
+//	private Transacao transaco;
 
 	public Endereco() {
 		super();

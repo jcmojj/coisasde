@@ -23,7 +23,7 @@ public class Pessoa implements Serializable {
 	private String nome;
 	private String cpf;
 	private String rg;
-	@OneToMany(mappedBy="pessoa")
+	@OneToMany
 	private List<Telefone> telefones;
 	@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL) //ok
 	private Usuario usuario;
