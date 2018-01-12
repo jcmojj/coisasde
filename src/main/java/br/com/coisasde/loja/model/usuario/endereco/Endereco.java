@@ -2,7 +2,6 @@ package br.com.coisasde.loja.model.usuario.endereco;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +26,7 @@ public class Endereco implements Serializable {
 	private String cep;
 	@ManyToOne
 	private Paesci paesci;
-	@OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL) // ok
+	@OneToOne(mappedBy = "endereco") // ok
 	private Pessoa pessoa;
 //	@OneToMany(mappedBy = "endereco")
 //	private Transacao transaco;

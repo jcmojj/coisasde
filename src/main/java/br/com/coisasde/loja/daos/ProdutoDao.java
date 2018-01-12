@@ -1,16 +1,13 @@
 package br.com.coisasde.loja.daos;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.ejb.Stateless;
 
 import br.com.coisasde.loja.model.produto.Produto;
 
-public class ProdutoDao {
-	
-	@PersistenceContext
-	private EntityManager manager;
-	
-	public void salvar(Produto produto) {
-		manager.persist(produto);
+@Stateless
+public class ProdutoDao extends Dao<Produto> {
+
+	public ProdutoDao() {
+		super(Produto.class);
 	}
 }

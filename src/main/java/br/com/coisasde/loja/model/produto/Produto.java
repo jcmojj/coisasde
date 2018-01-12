@@ -3,6 +3,7 @@ package br.com.coisasde.loja.model.produto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table (uniqueConstraints= {@UniqueConstraint(columnNames = {"tipoPet","secaoPet","tipoProdutoPet"})})
 public abstract class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +28,13 @@ public abstract class Produto implements Serializable{
 	private String descricao;
 	private BigDecimal preco;
 	private Integer quantidade;
+	
+	 @Column
+	protected String tipoPet;
+	 @Column
+	protected String secaoPet;
+	 @Column
+	protected String tipoProdutoPet;
 
 	
 	@Override
@@ -31,6 +42,37 @@ public abstract class Produto implements Serializable{
 		return "Produto [nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + ", quantidade=" + quantidade
 				+ "]";
 	}
+	
+
+	protected String getTipoPet() {
+		return tipoPet;
+	}
+
+
+	protected void setTipoPet(String tipoPet) {
+		this.tipoPet = tipoPet;
+	}
+
+
+	protected String getSecaoPet() {
+		return secaoPet;
+	}
+
+
+	protected void setSecaoPet(String secaoPet) {
+		this.secaoPet = secaoPet;
+	}
+
+
+	protected String getTipoProdutoPet() {
+		return tipoProdutoPet;
+	}
+
+
+	protected void setTipoProdutoPet(String tipoProdutoPet) {
+		this.tipoProdutoPet = tipoProdutoPet;
+	}
+
 
 	public String getNome() {
 		return nome;
