@@ -11,8 +11,6 @@ import javax.persistence.OneToOne;
 
 import br.com.coisasde.loja.model.produto.CachorroAlimentacaoPetisco;
 import br.com.coisasde.loja.model.produto.CachorroAlimentacaoSeca;
-import br.com.coisasde.loja.model.produto.GatoAlimentacaoPetisco;
-import br.com.coisasde.loja.model.produto.GatoAlimentacaoSeca;
 
 @Entity
 public class IdadePet implements Serializable{
@@ -23,10 +21,10 @@ public class IdadePet implements Serializable{
 	private CachorroAlimentacaoSeca cachorroAlimentacaoSeca;
 	@OneToOne(mappedBy = "idadePet")
 	private CachorroAlimentacaoPetisco cachorroAlimentacaoPetisco;
-	@OneToOne(mappedBy = "idadePet")
-	private GatoAlimentacaoSeca gatoAlimentacaoSeca;
-	@OneToOne(mappedBy = "idadePet")
-	private GatoAlimentacaoPetisco gatoAlimentacaoPetisco;
+//	@OneToOne(mappedBy = "idadePet")
+//	private GatoAlimentacaoSeca gatoAlimentacaoSeca;
+//	@OneToOne(mappedBy = "idadePet")
+//	private GatoAlimentacaoPetisco gatoAlimentacaoPetisco;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -54,21 +52,21 @@ public class IdadePet implements Serializable{
 		this.cachorroAlimentacaoPetisco = cachorroAlimentacaoPetisco;
 	}
 
-	public GatoAlimentacaoSeca getGatoAlimentacaoSeca() {
-		return gatoAlimentacaoSeca;
-	}
-
-	public void setGatoAlimentacaoSeca(GatoAlimentacaoSeca gatoAlimentacaoSeca) {
-		this.gatoAlimentacaoSeca = gatoAlimentacaoSeca;
-	}
-
-	public GatoAlimentacaoPetisco getGatoAlimentacaoPetisco() {
-		return gatoAlimentacaoPetisco;
-	}
-
-	public void setGatoAlimentacaoPetisco(GatoAlimentacaoPetisco gatoAlimentacaoPetisco) {
-		this.gatoAlimentacaoPetisco = gatoAlimentacaoPetisco;
-	}
+//	public GatoAlimentacaoSeca getGatoAlimentacaoSeca() {
+//		return gatoAlimentacaoSeca;
+//	}
+//
+//	public void setGatoAlimentacaoSeca(GatoAlimentacaoSeca gatoAlimentacaoSeca) {
+//		this.gatoAlimentacaoSeca = gatoAlimentacaoSeca;
+//	}
+//
+//	public GatoAlimentacaoPetisco getGatoAlimentacaoPetisco() {
+//		return gatoAlimentacaoPetisco;
+//	}
+//
+//	public void setGatoAlimentacaoPetisco(GatoAlimentacaoPetisco gatoAlimentacaoPetisco) {
+//		this.gatoAlimentacaoPetisco = gatoAlimentacaoPetisco;
+//	}
 
 	public Integer getId() {
 		return id;

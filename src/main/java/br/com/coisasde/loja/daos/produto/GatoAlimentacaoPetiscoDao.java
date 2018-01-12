@@ -1,14 +1,9 @@
 package br.com.coisasde.loja.daos.produto;
 
-import javax.ejb.Stateless;
+//@Stateless
+public class GatoAlimentacaoPetiscoDao {//extends Dao<GatoAlimentacaoPetisco> {
 
-import br.com.coisasde.loja.daos.Dao;
-import br.com.coisasde.loja.model.produto.GatoAlimentacaoPetisco;
-
-@Stateless
-public class GatoAlimentacaoPetiscoDao extends Dao<GatoAlimentacaoPetisco> {
-
-	public GatoAlimentacaoPetiscoDao() {
-		super(GatoAlimentacaoPetisco.class);
-	}
+//	public GatoAlimentacaoPetiscoDao() {
+//		super(GatoAlimentacaoPetisco.class);
+//	}
 }

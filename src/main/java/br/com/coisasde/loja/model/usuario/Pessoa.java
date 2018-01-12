@@ -28,9 +28,9 @@ public class Pessoa implements Serializable {
 	@Column
 	private String cpf;
 	private String rg;
-	@OneToMany
+	@OneToMany (mappedBy = "pessoa")
 	private List<Telefone> telefones;
-	@OneToOne(mappedBy = "pessoa", cascade = CascadeType.ALL) //ok
+	@OneToOne(mappedBy = "pessoa") //ok
 	private Usuario usuario;
 	@OneToOne(cascade = CascadeType.ALL) //ok
 	private Endereco endereco;

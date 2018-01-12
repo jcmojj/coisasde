@@ -11,8 +11,6 @@ import javax.persistence.OneToOne;
 
 import br.com.coisasde.loja.model.produto.CachorroAlimentacaoPetisco;
 import br.com.coisasde.loja.model.produto.CachorroAlimentacaoSeca;
-import br.com.coisasde.loja.model.produto.GatoAlimentacaoPetisco;
-import br.com.coisasde.loja.model.produto.GatoAlimentacaoSeca;
 
 @Entity
 public class PesoRacao implements Serializable{
@@ -22,10 +20,10 @@ public class PesoRacao implements Serializable{
 	private CachorroAlimentacaoSeca cachorroAlimentacaoSeca;
 	@OneToOne(mappedBy = "pesoRacao")
 	private CachorroAlimentacaoPetisco cachorroAlimentacaoPetisco;
-	@OneToOne(mappedBy = "pesoRacao")
-	private GatoAlimentacaoSeca gatoAlimentacaoSeca;
-	@OneToOne(mappedBy = "pesoRacao")
-	private GatoAlimentacaoPetisco gatoAlimentacaoPetisco;
+//	@OneToOne(mappedBy = "pesoRacao")
+//	private GatoAlimentacaoSeca gatoAlimentacaoSeca;
+//	@OneToOne(mappedBy = "pesoRacao")
+//	private GatoAlimentacaoPetisco gatoAlimentacaoPetisco;
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -53,21 +51,21 @@ public class PesoRacao implements Serializable{
 		this.cachorroAlimentacaoPetisco = cachorroAlimentacaoPetisco;
 	}
 
-	public GatoAlimentacaoSeca getGatoAlimentacaoSeca() {
-		return gatoAlimentacaoSeca;
-	}
-
-	public void setGatoAlimentacaoSeca(GatoAlimentacaoSeca gatoAlimentacaoSeca) {
-		this.gatoAlimentacaoSeca = gatoAlimentacaoSeca;
-	}
-
-	public GatoAlimentacaoPetisco getGatoAlimentacaoPetisco() {
-		return gatoAlimentacaoPetisco;
-	}
-
-	public void setGatoAlimentacaoPetisco(GatoAlimentacaoPetisco gatoAlimentacaoPetisco) {
-		this.gatoAlimentacaoPetisco = gatoAlimentacaoPetisco;
-	}
+//	public GatoAlimentacaoSeca getGatoAlimentacaoSeca() {
+//		return gatoAlimentacaoSeca;
+//	}
+//
+//	public void setGatoAlimentacaoSeca(GatoAlimentacaoSeca gatoAlimentacaoSeca) {
+//		this.gatoAlimentacaoSeca = gatoAlimentacaoSeca;
+//	}
+//
+//	public GatoAlimentacaoPetisco getGatoAlimentacaoPetisco() {
+//		return gatoAlimentacaoPetisco;
+//	}
+//
+//	public void setGatoAlimentacaoPetisco(GatoAlimentacaoPetisco gatoAlimentacaoPetisco) {
+//		this.gatoAlimentacaoPetisco = gatoAlimentacaoPetisco;
+//	}
 
 	public Integer getId() {
 		return id;

@@ -3,10 +3,7 @@ package br.com.coisasde.loja.model.produto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 public abstract class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id //@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String nome;
@@ -29,11 +26,11 @@ public abstract class Produto implements Serializable{
 	private BigDecimal preco;
 	private Integer quantidade;
 	
-	 @Column
+//	 @Column
 	protected String tipoPet;
-	 @Column
+//	 @Column
 	protected String secaoPet;
-	 @Column
+//	 @Column
 	protected String tipoProdutoPet;
 
 	
