@@ -16,9 +16,11 @@ import br.com.coisasde.loja.daos.LogradouroDao;
 import br.com.coisasde.loja.daos.PaesciDao;
 import br.com.coisasde.loja.daos.TipoTelefoneDao;
 import br.com.coisasde.loja.daos.novos.SecaoPetDao;
+import br.com.coisasde.loja.daos.novos.TipoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoProdutoPetDao;
-import br.com.coisasde.loja.model.produto.SecaoPet;
-import br.com.coisasde.loja.model.produto.TipoProdutoPet;
+import br.com.coisasde.loja.model.produto.novos.SecaoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
 import br.com.coisasde.loja.model.usuario.endereco.Logradouro;
 import br.com.coisasde.loja.model.usuario.endereco.Paesci;
 import br.com.coisasde.loja.model.usuario.telefone.TipoTelefone;
@@ -34,6 +36,7 @@ public class InicializarBean {
 		paesci();
 		secao();
 		tipoProdutoPet();
+		tipoPet();
 	}
 
 	@Inject
@@ -61,64 +64,7 @@ public class InicializarBean {
 			e.printStackTrace();
 		}
 	}
-
-	@Inject
-	private SecaoPetDao secaoPetDao;
-
-	@Transactional
-	public void secao() {
-		try {
-			InputStream is = new FileInputStream(
-					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/secaoPet");
-			InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
-			String secao = br.readLine();
-
-			while (secao != null) {
-
-				secaoPetDao.adiciona(new SecaoPet(secao));
-
-				secao = br.readLine();
-			}
-			br.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 	
-	
-	
-	@Inject
-	private TipoProdutoPetDao tipoProdutoPetDao;
-
-	@Transactional
-	public void tipoProdutoPet() {
-		try {
-			InputStream is = new FileInputStream(
-					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/tipoProdutoPet");
-			InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
-			String tipoProdutoPet = br.readLine();
-
-			while (tipoProdutoPet != null) {
-
-				tipoProdutoPetDao.adiciona(new TipoProdutoPet(tipoProdutoPet));
-
-				tipoProdutoPet = br.readLine();
-			}
-			br.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	
-
 	@Inject
 	private TipoTelefoneDao tipoTelefoneDao;
 
@@ -183,4 +129,88 @@ public class InicializarBean {
 			e.printStackTrace();
 		}
 	}
+	
+
+	@Inject
+	private SecaoPetDao secaoPetDao;
+
+	@Transactional
+	public void secao() {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/secaoPet");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String secao = br.readLine();
+
+			while (secao != null) {
+
+				secaoPetDao.adiciona(new SecaoPet(secao));
+
+				secao = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	@Inject
+	private TipoProdutoPetDao tipoProdutoPetDao;
+
+	@Transactional
+	public void tipoProdutoPet() {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/tipoProdutoPet");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String tipoProdutoPet = br.readLine();
+
+			while (tipoProdutoPet != null) {
+
+				tipoProdutoPetDao.adiciona(new TipoProdutoPet(tipoProdutoPet));
+
+				tipoProdutoPet = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	@Inject
+	private TipoPetDao tipoPetDao;
+
+	@Transactional
+	public void tipoPet() {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/tipoPet");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String tipoPet = br.readLine();
+
+			while (tipoPet != null) {
+
+				tipoPetDao.adiciona(new TipoPet(tipoPet));
+
+				tipoPet = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

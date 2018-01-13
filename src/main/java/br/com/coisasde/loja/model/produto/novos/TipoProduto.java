@@ -1,4 +1,4 @@
-package br.com.coisasde.loja.model.produto;
+package br.com.coisasde.loja.model.produto.novos;
 
 //@Entity
 //@Table (uniqueConstraints= {@UniqueConstraint(columnNames = {"tipoPrincipal","tipos","subTipos"})})

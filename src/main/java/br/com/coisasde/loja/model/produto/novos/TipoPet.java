@@ -1,38 +1,44 @@
-package br.com.coisasde.loja.model.produto;
+package br.com.coisasde.loja.model.produto.novos;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+
+import br.com.coisasde.loja.model.produto.Produto;
 
 @Entity
-public class TipoProdutoPet {
+public class TipoPet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 
-	@OneToOne(mappedBy="tipoProdutoPet")
-	private Produto produto;
+	@ManyToMany
+	private List<Produto> produtos;
+
 
 	@Override
 	public String toString() {
-		return "TipoProdutoPet [id=" + id + ", nome=" + nome + ", produto=" + produto + "]";
+		return "TipoPet [id=" + id + ", nome=" + nome + ", produtos=" + produtos + "]";
 	}
+
 	// Construtor
-	public TipoProdutoPet(Integer id) {
+	public TipoPet(Integer id) {
 		super();
 		this.id = id;
 	}
 	
-	public TipoProdutoPet(String nome) {
+	public TipoPet(String nome) {
 		super();
 		this.nome = nome;
 	}
 	
-	public TipoProdutoPet() {
+	public TipoPet() {
 		super();
 	}
 	
@@ -53,12 +59,13 @@ public class TipoProdutoPet {
 		this.nome = nome;
 	}
 
-	public Produto getProduto() {
-		return produto;
-	}
+//	public List<Produto> getProdutos() {
+//		return produtos;
+//	}
+//
+//	public void setProdutos(List<Produto> produtos) {
+//		this.produtos = produtos;
+//	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
 
 }

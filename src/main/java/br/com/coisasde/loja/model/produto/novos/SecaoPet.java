@@ -1,4 +1,4 @@
-package br.com.coisasde.loja.model.produto;
+package br.com.coisasde.loja.model.produto.novos;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import br.com.coisasde.loja.model.produto.Produto;
 
 @Entity
 public class SecaoPet {
@@ -28,6 +30,7 @@ public class SecaoPet {
 	public SecaoPet (String nome) {
 		this.nome = nome;
 	}
+	//deletar esse último
 	public SecaoPet(Integer id, String nome) {
 		this.id = id;
 		this.nome = nome;
@@ -50,10 +53,11 @@ public class SecaoPet {
 		this.nome = nome;
 	}
 
-//	public List<Product> getProducts() {
+
+//	public List<Produto> getProdutos() {
 //		return produtos;
 //	}
-//	public void setProducts(List<Product> produtos) {
+//	public void setProdutos(List<Produto> produtos) {
 //		this.produtos = produtos;
 //	}
 	@Override

@@ -10,10 +10,12 @@ import javax.transaction.Transactional;
 
 import br.com.coisasde.loja.daos.novos.ProdutoDao;
 import br.com.coisasde.loja.daos.novos.SecaoPetDao;
+import br.com.coisasde.loja.daos.novos.TipoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoProdutoPetDao;
 import br.com.coisasde.loja.model.produto.Produto;
-import br.com.coisasde.loja.model.produto.SecaoPet;
-import br.com.coisasde.loja.model.produto.TipoProdutoPet;
+import br.com.coisasde.loja.model.produto.novos.SecaoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
 
 @Named
 @RequestScoped
@@ -21,6 +23,7 @@ public class ProdutoBean {
 	private Produto produto = new Produto();
 	private List<Integer> secoesPetId = new ArrayList<>();
 	private Integer tipoProdutoPetId = 0;
+	private List<Integer> tiposPetId = new ArrayList<>();
 
 	@Inject
 	private ProdutoDao produtoDao;
@@ -28,6 +31,8 @@ public class ProdutoBean {
 	private SecaoPetDao secaoPetDao;
 	@Inject
 	private TipoProdutoPetDao tipoProdutoPetDao;
+	@Inject
+	private TipoPetDao tipoPetDao;
 	
 	//Persistencia
 	@Transactional
@@ -36,10 +41,14 @@ public class ProdutoBean {
 			produto.getSecoesPet().add(new SecaoPet(secaoId));
 		}
 		produto.setTipoProdutoPet(new TipoProdutoPet(tipoProdutoPetId));
+		for(Integer tipoPetId :tiposPetId) {
+			produto.getTiposPet().add(new TipoPet(tipoPetId));
+		}
 		produtoDao.adiciona(produto);
 		this.produto = new Produto();
 		this.secoesPetId = new ArrayList<>();
 		this.tipoProdutoPetId = 0;
+		this.tiposPetId = new ArrayList<>();
 
 	}
 	//Getters and Setters
@@ -68,6 +77,15 @@ public class ProdutoBean {
 	public void setTipoProdutoPetId(Integer tipoProdutoPetId) {
 		this.tipoProdutoPetId = tipoProdutoPetId;
 	}
+	
+	public List<Integer> getTiposPetId() {
+		return tiposPetId;
+	}
+
+	public void setTiposPetId(List<Integer> tiposPetId) {
+		this.tiposPetId = tiposPetId;
+	}
+
 	// OUTROS
 	public List<SecaoPet> getSecoesPet() {
 		return secaoPetDao.listaTodos();
@@ -75,5 +93,7 @@ public class ProdutoBean {
 	public List<TipoProdutoPet> getTiposProdutoPet(){
 		return tipoProdutoPetDao.listaTodos();
 	}
-
+	public List<TipoPet> getTiposPet(){
+		return tipoPetDao.listaTodos();
+	}
 }

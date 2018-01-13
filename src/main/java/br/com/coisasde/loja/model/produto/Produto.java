@@ -13,6 +13,10 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import br.com.coisasde.loja.model.produto.novos.SecaoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
+
 @Entity
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -29,12 +33,14 @@ public class Produto implements Serializable {
 	private List<SecaoPet> secoesPet = new ArrayList<>();
 	@OneToOne
 	private TipoProdutoPet tipoProdutoPet;
+	@ManyToMany
+	private List<TipoPet> tiposPet = new ArrayList<>();
 
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco
 				+ ", quantidade=" + quantidade + ", secoesPet=" + secoesPet + ", tipoProdutoPet=" + tipoProdutoPet
-				+ "]";
+				+ ", tiposPet=" + tiposPet + "]";
 	}
 
 	public Integer getId() {
@@ -91,6 +97,14 @@ public class Produto implements Serializable {
 
 	public void setTipoProdutoPet(TipoProdutoPet tipoProdutoPet) {
 		this.tipoProdutoPet = tipoProdutoPet;
+	}
+
+	public List<TipoPet> getTiposPet() {
+		return tiposPet;
+	}
+
+	public void setTiposPet(List<TipoPet> tiposPet) {
+		this.tiposPet = tiposPet;
 	}
 
 }

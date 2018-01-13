@@ -47,7 +47,14 @@
 				itemValue="#{tipoProdutoPet.id}" itemLabel="#{tipoProdutoPet.nome}" />
 		</h:selectOneMenu>
 	</div>
-
+	<div>
+		<h:outputLabel value="Tipo Pet" />
+		<h:selectManyListbox value="#{produtoBean.tiposPetId}"
+			converter="javax.faces.Integer">
+			<f:selectItems value="#{produtoBean.tiposPet}" var="tipoPet"
+				itemValue="#{tipoPet.id}" itemLabel="#{tipoPet.nome}" />
+		</h:selectManyListbox>
+	</div>
 
 
 
