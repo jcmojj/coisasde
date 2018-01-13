@@ -15,8 +15,8 @@ import javax.transaction.Transactional;
 import br.com.coisasde.loja.daos.LogradouroDao;
 import br.com.coisasde.loja.daos.PaesciDao;
 import br.com.coisasde.loja.daos.TipoTelefoneDao;
-import br.com.coisasde.loja.daos.novos.SectionDao;
-import br.com.coisasde.loja.model.produto.Section;
+import br.com.coisasde.loja.daos.novos.SecaoPetDao;
+import br.com.coisasde.loja.model.produto.SecaoPet;
 import br.com.coisasde.loja.model.usuario.endereco.Logradouro;
 import br.com.coisasde.loja.model.usuario.endereco.Paesci;
 import br.com.coisasde.loja.model.usuario.telefone.TipoTelefone;
@@ -30,7 +30,7 @@ public class InicializarBean {
 		logradouro();
 		tipoTelefone();
 		paesci();
-		section();
+		secao();
 	}
 
 	@Inject
@@ -60,22 +60,22 @@ public class InicializarBean {
 	}
 
 	@Inject
-	private SectionDao sectionDao;
+	private SecaoPetDao secaoPetDao;
 
 	@Transactional
-	public void section() {
+	public void secao() {
 		try {
 			InputStream is = new FileInputStream(
-					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/section");
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/secao");
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
-			String section = br.readLine();
+			String secao = br.readLine();
 
-			while (section != null) {
+			while (secao != null) {
 
-				sectionDao.adiciona(new Section(section));
+				secaoPetDao.adiciona(new SecaoPet(secao));
 
-				section = br.readLine();
+				secao = br.readLine();
 			}
 			br.close();
 		} catch (FileNotFoundException e) {

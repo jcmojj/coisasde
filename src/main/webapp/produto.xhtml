@@ -8,42 +8,40 @@
 <h:head>
 Product Table
 </h:head>
-<h:form>
-<h:commandLink action="#{productBean.listarSection}" value="Listar Section" /><br />
-</h:form>
+
 
 
 <h:form>
 
 	<div>
 		<h:outputLabel value="Nome" />
-		<h:inputText value="#{productBean.product.nome}" />
+		<h:inputText value="#{produtoBean.produto.nome}" />
 	</div>
 	<div>
 		<h:outputLabel value="Descrição" />
 		<h:inputTextarea rows="4" cols="20"
-			value="#{productBean.product.descricao}" />
+			value="#{produtoBean.produto.descricao}" />
 	</div>
 	<div>
 		<h:outputLabel value="Preço" />
-		<h:inputText value="#{productBean.product.preco}" />
+		<h:inputText value="#{produtoBean.produto.preco}" />
 	</div>
 	<div>
 		<h:outputLabel value="Quantidade" />
-		<h:inputText value="#{productBean.product.quantidade}" />
+		<h:inputText value="#{produtoBean.produto.quantidade}" />
 	</div>
 	<div>
 		<h:outputLabel value="Secoes" />
-		<h:selectManyListbox value="#{productBean.sectionsId}" converter="javax.faces.Integer">
-			<f:selectItems value="#{productBean.sections}" var="section"
-				itemValue="#{section.id}" itemLabel="#{section.name}" />
+		<h:selectManyListbox value="#{produtoBean.secoesPetId}" converter="javax.faces.Integer">
+			<f:selectItems value="#{produtoBean.secoesPet}" var="secaoPet"
+				itemValue="#{secaoPet.id}" itemLabel="#{secaoPet.nome}" />
 		</h:selectManyListbox>
 	</div>
 
 
 
 
-	<h:commandButton value="Cadastrar" action="#{productBean.save}" />
+	<h:commandButton value="Cadastrar" action="#{produtoBean.save}" />
 
 </h:form>
 

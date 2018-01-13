@@ -11,7 +11,7 @@ import br.com.coisasde.loja.model.produto.atributo.RacaCachorro;
 import br.com.coisasde.loja.model.produto.atributo.TipoRacao;
 
 @Entity
-public class CachorroAlimentacaoSeca extends Produto{
+public class CachorroAlimentacaoSeca extends ProdutoMaster{
 	private static final long serialVersionUID = 1L;
 
 	

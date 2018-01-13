@@ -2,112 +2,72 @@ package br.com.coisasde.loja.model.produto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.ManyToMany;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table (uniqueConstraints= {@UniqueConstraint(columnNames = {"tipoPet","secaoPet","tipoProdutoPet"})})
-public abstract class Produto implements Serializable{
+public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	@Id //@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	
 	private String nome;
 	@Lob
 	private String descricao;
 	private BigDecimal preco;
 	private Integer quantidade;
-	
-//	 @Column
-	protected String tipoPet;
-//	 @Column
-	protected String secaoPet;
-//	 @Column
-	protected String tipoProdutoPet;
+	@ManyToMany
+	private List<SecaoPet> secoesPet = new ArrayList<>();
 
-	
 	@Override
 	public String toString() {
-		return "Produto [nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + ", quantidade=" + quantidade
-				+ "]";
+		return "Product [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco
+				+ ", quantidade=" + quantidade + ", secoesPet=" + secoesPet + "]";
 	}
-	
-	
-
-	public Produto() {
-		super();
+	public Integer getId() {
+		return id;
 	}
-
-
-
-	protected String getTipoPet() {
-		return tipoPet;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-
-
-	protected void setTipoPet(String tipoPet) {
-		this.tipoPet = tipoPet;
-	}
-
-
-	protected String getSecaoPet() {
-		return secaoPet;
-	}
-
-
-	protected void setSecaoPet(String secaoPet) {
-		this.secaoPet = secaoPet;
-	}
-
-
-	protected String getTipoProdutoPet() {
-		return tipoProdutoPet;
-	}
-
-
-	protected void setTipoProdutoPet(String tipoProdutoPet) {
-		this.tipoProdutoPet = tipoProdutoPet;
-	}
-
-
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	public String getDescricao() {
 		return descricao;
 	}
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
 	public BigDecimal getPreco() {
 		return preco;
 	}
-
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-
 	public Integer getQuantidade() {
 		return quantidade;
 	}
-
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-
+	public List<SecaoPet> getSecoesPet() {
+		return secoesPet;
+	}
+	public void setSecoePet(List<SecaoPet> secoesPet) {
+		this.secoesPet = secoesPet;
+	}
+	
+	
+	
 }

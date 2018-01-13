@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
-import br.com.coisasde.loja.daos.ProdutoDao;
+import br.com.coisasde.loja.daos.ProdutoMasterDao;
 import br.com.coisasde.loja.model.produto.CachorroAlimentacaoPetisco;
 
 @Named
@@ -14,7 +14,7 @@ public class CachorroAlimentacaoPetiscoBean {
 	private CachorroAlimentacaoPetisco cachorroAlimentacaoPetisco = new CachorroAlimentacaoPetisco();
 	
 	@Inject
-	private ProdutoDao dao;
+	private ProdutoMasterDao dao;
 	
 	@Transactional
 	public void salvar() {

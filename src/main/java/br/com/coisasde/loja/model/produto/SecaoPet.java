@@ -9,28 +9,28 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Section {
+public class SecaoPet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
+	private String nome;
 	@ManyToMany
-	private List<Product> products;
+	private List<Produto> produtos;
 	
 
 // Construtores
-	public Section() {
+	public SecaoPet() {
 	}
-	public Section(Integer sectionId) {
-		this.id = sectionId;
+	public SecaoPet(Integer secaoPetId) {
+		this.id = secaoPetId;
 	}
-	public Section (String name) {
-		this.name = name;
+	public SecaoPet (String nome) {
+		this.nome = nome;
 	}
-	public Section(Integer id, String name) {
+	public SecaoPet(Integer id, String nome) {
 		this.id = id;
-		this.name = name;
+		this.nome = nome;
 	}
 	
 // Getters and Setters
@@ -42,23 +42,23 @@ public class Section {
 		this.id = id;	
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 //	public List<Product> getProducts() {
-//		return products;
+//		return produtos;
 //	}
-//	public void setProducts(List<Product> products) {
-//		this.products = products;
+//	public void setProducts(List<Product> produtos) {
+//		this.produtos = produtos;
 //	}
 	@Override
 	public String toString() {
-		return "Section [id=" + id + ", name=" + name + "]";
+		return "SecaoPet [id=" + id + ", nome=" + nome + "]";
 	}
 
 }
