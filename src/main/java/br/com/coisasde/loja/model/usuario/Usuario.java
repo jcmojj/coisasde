@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class Usuario implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,6 +28,9 @@ public class Usuario implements Serializable {
 	private String email;
 	@Column(nullable = true, unique = true, length = 15)
 	private String senha;
+//	@ElementCollection(targetClass = Portes.class)
+//	@Enumerated(EnumType.STRING)
+//	private List<Porte> portes;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCriacao;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -41,6 +44,28 @@ public class Usuario implements Serializable {
 		this.email = email;
 		this.senha = senha;
 	}
+	
+	public Usuario() {
+		super();
+	}
+
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+//	public List<Porte> getPortes() {
+//		return portes;
+//	}
+//
+//	public void setPortes(List<Porte> portes) {
+//		this.portes = portes;
+//	}
 
 	public String getEmail() {
 		return email;

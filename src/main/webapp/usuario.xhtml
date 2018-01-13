@@ -5,15 +5,14 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>MyKidPet</title>
+	<title>CoisasDe</title>
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 </h:head>
 <h:body>
-	<header id="cabecalho"> 
-	<h:graphicImage library="img" name="tatinha.png" style="padding:0; margin:0; height:60px" />
-	<h:outputText> MyKidPet - Control </h:outputText>
-	<h:graphicImage library="img" name="belinha.png" style="padding:0; margin:0; height:60px" /> 
-		<!-- <div id="usuarioLogado">Logado como: #{loginBean.usuario.login}</div> -->
+	<header id="cabecalho"> <h:graphicImage library="img"
+		name="tatinha.png" style="padding:0; margin:0; height:60px" /> <h:outputText> MyKidPet - Control </h:outputText>
+	<h:graphicImage library="img" name="belinha.png"
+		style="padding:0; margin:0; height:60px" /> <!-- <div id="usuarioLogado">Logado como: #{loginBean.usuario.login}</div> -->
 	</header>
 	<!--  formulario para adicionar o produto -->
 	<div id="conteudo">
@@ -25,15 +24,17 @@
 		</h2>
 		<h:form id="formUsuario">
 			<h:inputHidden value="#{usuariosBean.usuario.id}" />
-	
-			  
-			<h:inputHidden value="#{usuariosBean.usuario.dataAlteracao.time}" >
-				<f:convertDateTime timeZone="Americas/Sao_Paulo" pattern="dd/mm/yyyy"/>
+
+
+			<h:inputHidden value="#{usuariosBean.usuario.dataAlteracao.time}">
+				<f:convertDateTime timeZone="Americas/Sao_Paulo"
+					pattern="dd/mm/yyyy" />
 			</h:inputHidden>
-			<h:inputHidden value="#{usuariosBean.usuario.dataCriacao.time}" >
-				<f:convertDateTime timeZone="Americas/Sao_Paulo" pattern="dd/mm/yyyy"/>
-			</h:inputHidden>			
-				
+			<h:inputHidden value="#{usuariosBean.usuario.dataCriacao.time}">
+				<f:convertDateTime timeZone="Americas/Sao_Paulo"
+					pattern="dd/mm/yyyy" />
+			</h:inputHidden>
+
 			<fieldset>
 				<legend>Dados do Produto</legend>
 
@@ -75,28 +76,25 @@
 			</h:column>
 
 				<h:column>
-					<f:facet name="header">Apelido</f:facet>
-			#{usuario.apelido}
-			</h:column>
-			
-			<h:column>
 					<f:facet name="header">Data Criacao</f:facet>
 					<h:outputText value="#{usuario.dataCriacao.time}">
-    					<f:convertDateTime type="both" dateStyle="long" />
-					</h:outputText>					
-			</h:column>
-			
-			<h:column>
+						<f:convertDateTime type="both" dateStyle="long" />
+					</h:outputText>
+				</h:column>
+
+				<h:column>
 					<f:facet name="header">Data Alteracao</f:facet>
 					<h:outputText value="#{usuario.dataAlteracao.time}">
-    					<f:convertDateTime type="both" dateStyle="long" />
-					</h:outputText>			</h:column>
+						<f:convertDateTime type="both" dateStyle="long" />
+					</h:outputText>
+				</h:column>
 
-	
+
 
 				<h:column>
 					<f:facet name="header">Remover</f:facet>
-					<h:commandLink action="#{usuariosBean.remove(usuario)}" value="Remover">
+					<h:commandLink action="#{usuariosBean.remove(usuario)}"
+						value="Remover">
 						<f:ajax render="@form" />
 					</h:commandLink>
 				</h:column>

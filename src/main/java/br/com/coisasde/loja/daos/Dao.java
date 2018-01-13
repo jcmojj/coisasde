@@ -20,6 +20,11 @@ public class Dao<T> {
 	public void adiciona(T t) {
 		manager.persist(t);
 	}
+	
+	public T adicionaVolta(T t) {
+		manager.persist(t);
+		return t;
+	}
 
 	public void remove(T t) {
 		manager.joinTransaction();

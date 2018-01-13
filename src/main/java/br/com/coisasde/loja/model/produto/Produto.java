@@ -40,6 +40,13 @@ public abstract class Produto implements Serializable{
 				+ "]";
 	}
 	
+	
+
+	public Produto() {
+		super();
+	}
+
+
 
 	protected String getTipoPet() {
 		return tipoPet;

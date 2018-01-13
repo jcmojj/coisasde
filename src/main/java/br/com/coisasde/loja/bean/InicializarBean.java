@@ -15,6 +15,8 @@ import javax.transaction.Transactional;
 import br.com.coisasde.loja.daos.LogradouroDao;
 import br.com.coisasde.loja.daos.PaesciDao;
 import br.com.coisasde.loja.daos.TipoTelefoneDao;
+import br.com.coisasde.loja.daos.novos.SectionDao;
+import br.com.coisasde.loja.model.produto.Section;
 import br.com.coisasde.loja.model.usuario.endereco.Logradouro;
 import br.com.coisasde.loja.model.usuario.endereco.Paesci;
 import br.com.coisasde.loja.model.usuario.telefone.TipoTelefone;
@@ -28,11 +30,12 @@ public class InicializarBean {
 		logradouro();
 		tipoTelefone();
 		paesci();
+		section();
 	}
-	
+
 	@Inject
 	private LogradouroDao logradouroDao;
-	
+
 	@Transactional
 	public void logradouro() {
 		try {
@@ -43,7 +46,7 @@ public class InicializarBean {
 			String logradouro = br.readLine();
 
 			while (logradouro != null) {
-				
+
 				logradouroDao.adiciona(new Logradouro(logradouro));
 
 				logradouro = br.readLine();
@@ -55,10 +58,36 @@ public class InicializarBean {
 			e.printStackTrace();
 		}
 	}
-	
+
+	@Inject
+	private SectionDao sectionDao;
+
+	@Transactional
+	public void section() {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/section");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String section = br.readLine();
+
+			while (section != null) {
+
+				sectionDao.adiciona(new Section(section));
+
+				section = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Inject
 	private TipoTelefoneDao tipoTelefoneDao;
-	
+
 	@Transactional
 	public void tipoTelefone() {
 		try {
@@ -69,7 +98,7 @@ public class InicializarBean {
 			String tipoTelefone = br.readLine();
 
 			while (tipoTelefone != null) {
-				
+
 				tipoTelefoneDao.adiciona(new TipoTelefone(tipoTelefone));
 
 				tipoTelefone = br.readLine();
@@ -84,7 +113,7 @@ public class InicializarBean {
 
 	@Inject
 	private PaesciDao paesciDao;
-	
+
 	@Transactional
 	public void paesci() {
 		System.out.println("Entrou tb");
@@ -110,7 +139,7 @@ public class InicializarBean {
 				pais = s.substring(first, second);
 				estado = s.substring(second + 1, third);
 				cidade = s.substring(third + 1, lenght);
-				paesciDao.adiciona(new Paesci(pais,estado,cidade));
+				paesciDao.adiciona(new Paesci(pais, estado, cidade));
 				s = br.readLine();
 			}
 			br.close();
