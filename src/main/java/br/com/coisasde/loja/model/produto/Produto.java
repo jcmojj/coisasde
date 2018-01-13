@@ -11,12 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Produto implements Serializable{
+public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	@Lob
@@ -25,49 +27,70 @@ public class Produto implements Serializable{
 	private Integer quantidade;
 	@ManyToMany
 	private List<SecaoPet> secoesPet = new ArrayList<>();
+	@OneToOne
+	private TipoProdutoPet tipoProdutoPet;
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco
-				+ ", quantidade=" + quantidade + ", secoesPet=" + secoesPet + "]";
+		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco
+				+ ", quantidade=" + quantidade + ", secoesPet=" + secoesPet + ", tipoProdutoPet=" + tipoProdutoPet
+				+ "]";
 	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public BigDecimal getPreco() {
 		return preco;
 	}
+
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
+
 	public Integer getQuantidade() {
 		return quantidade;
 	}
+
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
+
 	public List<SecaoPet> getSecoesPet() {
 		return secoesPet;
 	}
-	public void setSecoePet(List<SecaoPet> secoesPet) {
+
+	public void setSecoesPet(List<SecaoPet> secoesPet) {
 		this.secoesPet = secoesPet;
 	}
-	
-	
-	
+
+	public TipoProdutoPet getTipoProdutoPet() {
+		return tipoProdutoPet;
+	}
+
+	public void setTipoProdutoPet(TipoProdutoPet tipoProdutoPet) {
+		this.tipoProdutoPet = tipoProdutoPet;
+	}
+
 }

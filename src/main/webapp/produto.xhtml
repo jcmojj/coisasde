@@ -6,7 +6,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-Product Table
+	<h1>Tabela de Produto</h1>
 </h:head>
 
 
@@ -32,16 +32,26 @@ Product Table
 	</div>
 	<div>
 		<h:outputLabel value="Secoes" />
-		<h:selectManyListbox value="#{produtoBean.secoesPetId}" converter="javax.faces.Integer">
+		<h:selectManyListbox value="#{produtoBean.secoesPetId}"
+			converter="javax.faces.Integer">
 			<f:selectItems value="#{produtoBean.secoesPet}" var="secaoPet"
 				itemValue="#{secaoPet.id}" itemLabel="#{secaoPet.nome}" />
 		</h:selectManyListbox>
+	</div>
+	<div>
+		<h:outputLabel value="Tipo Produto" />
+		<h:selectOneMenu value="#{produtoBean.tipoProdutoPetId}"
+			converter="javax.faces.Integer">
+			<f:selectItem itemValue="" itemLabel="Selecione uma empresa"/>
+			<f:selectItems value="#{produtoBean.tiposProdutoPet}" var="tipoProdutoPet"
+				itemValue="#{tipoProdutoPet.id}" itemLabel="#{tipoProdutoPet.nome}" />
+		</h:selectOneMenu>
 	</div>
 
 
 
 
-	<h:commandButton value="Cadastrar" action="#{produtoBean.save}" />
+	<h:commandButton value="Cadastrar" action="#{produtoBean.salvar}" />
 
 </h:form>
 

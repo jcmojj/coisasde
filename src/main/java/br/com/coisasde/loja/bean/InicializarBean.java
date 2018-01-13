@@ -16,7 +16,9 @@ import br.com.coisasde.loja.daos.LogradouroDao;
 import br.com.coisasde.loja.daos.PaesciDao;
 import br.com.coisasde.loja.daos.TipoTelefoneDao;
 import br.com.coisasde.loja.daos.novos.SecaoPetDao;
+import br.com.coisasde.loja.daos.novos.TipoProdutoPetDao;
 import br.com.coisasde.loja.model.produto.SecaoPet;
+import br.com.coisasde.loja.model.produto.TipoProdutoPet;
 import br.com.coisasde.loja.model.usuario.endereco.Logradouro;
 import br.com.coisasde.loja.model.usuario.endereco.Paesci;
 import br.com.coisasde.loja.model.usuario.telefone.TipoTelefone;
@@ -31,6 +33,7 @@ public class InicializarBean {
 		tipoTelefone();
 		paesci();
 		secao();
+		tipoProdutoPet();
 	}
 
 	@Inject
@@ -66,7 +69,7 @@ public class InicializarBean {
 	public void secao() {
 		try {
 			InputStream is = new FileInputStream(
-					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/secao");
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/secaoPet");
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			String secao = br.readLine();
@@ -84,6 +87,37 @@ public class InicializarBean {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	@Inject
+	private TipoProdutoPetDao tipoProdutoPetDao;
+
+	@Transactional
+	public void tipoProdutoPet() {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/tipoProdutoPet");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String tipoProdutoPet = br.readLine();
+
+			while (tipoProdutoPet != null) {
+
+				tipoProdutoPetDao.adiciona(new TipoProdutoPet(tipoProdutoPet));
+
+				tipoProdutoPet = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 
 	@Inject
 	private TipoTelefoneDao tipoTelefoneDao;
