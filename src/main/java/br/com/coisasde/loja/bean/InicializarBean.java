@@ -18,12 +18,14 @@ import br.com.coisasde.loja.daos.TipoTelefoneDao;
 import br.com.coisasde.loja.daos.novos.SecaoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoProdutoPetDao;
+import br.com.coisasde.loja.daos.novos.TipoRacaoPetDao;
 import br.com.coisasde.loja.model.produto.novos.SecaoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
 import br.com.coisasde.loja.model.usuario.endereco.Logradouro;
 import br.com.coisasde.loja.model.usuario.endereco.Paesci;
 import br.com.coisasde.loja.model.usuario.telefone.TipoTelefone;
+import br.com.coisasde.loja.moel.produtos.novos.TipoRacaoPet;
 
 @Named
 @RequestScoped
@@ -37,6 +39,7 @@ public class InicializarBean {
 		secao();
 		tipoProdutoPet();
 		tipoPet();
+		tipoRacaoPet();
 	}
 
 	@Inject
@@ -204,6 +207,32 @@ public class InicializarBean {
 				tipoPetDao.adiciona(new TipoPet(tipoPet));
 
 				tipoPet = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Inject
+	private TipoRacaoPetDao tipoRacaoPetDao;
+
+	@Transactional
+	public void tipoRacaoPet() {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/tipoRacaoPet");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String tipoRacaoPet = br.readLine();
+
+			while (tipoRacaoPet != null) {
+
+				tipoRacaoPetDao.adiciona(new TipoRacaoPet(tipoRacaoPet));
+
+				tipoRacaoPet = br.readLine();
 			}
 			br.close();
 		} catch (FileNotFoundException e) {

@@ -1,4 +1,4 @@
-package br.com.coisasde.loja.model.produto.novos;
+package br.com.coisasde.loja.moel.produtos.novos;
 
 import java.util.List;
 
@@ -11,38 +11,38 @@ import javax.persistence.ManyToMany;
 import br.com.coisasde.loja.model.produto.Produto;
 
 @Entity
-public class SecaoPet {
-
+public class TipoRacaoPet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	@ManyToMany
 	private List<Produto> produtos;
-	
 
-// Construtores
-	public SecaoPet() {
+	@Override
+	public String toString() {
+		return "TipoRacaoPet [id=" + id + ", nome=" + nome + ", produtos=" + produtos + "]";
 	}
-	public SecaoPet(Long secaoPetId) {
-		this.id = secaoPetId;
+
+	// Construtores
+	public TipoRacaoPet() {
 	}
-	public SecaoPet (String nome) {
-		this.nome = nome;
-	}
-	//deletar esse último
-	public SecaoPet(Long id, String nome) {
+
+	public TipoRacaoPet(Long id) {
 		this.id = id;
+	}
+
+	public TipoRacaoPet(String nome) {
 		this.nome = nome;
 	}
-	
-// Getters and Setters
+
+	// Getters and Setters
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;	
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -52,17 +52,11 @@ public class SecaoPet {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-
-//	public List<Produto> getProdutos() {
-//		return produtos;
-//	}
-//	public void setProdutos(List<Produto> produtos) {
-//		this.produtos = produtos;
-//	}
-	@Override
-	public String toString() {
-		return "SecaoPet [id=" + id + ", nome=" + nome + "]";
-	}
+	// public List<Produto> getProdutos() {
+	// return produtos;
+	// }
+	// public void setProdutos(List<Produto> produtos) {
+	// this.produtos = produtos;
+	// }
 
 }

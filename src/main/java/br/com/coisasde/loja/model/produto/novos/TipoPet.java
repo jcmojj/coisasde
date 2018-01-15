@@ -15,7 +15,7 @@ public class TipoPet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nome;
 
 	@ManyToMany
@@ -28,7 +28,7 @@ public class TipoPet {
 	}
 
 	// Construtor
-	public TipoPet(Integer id) {
+	public TipoPet(Long id) {
 		super();
 		this.id = id;
 	}
@@ -43,11 +43,11 @@ public class TipoPet {
 	}
 	
 	//Getters and Setters
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

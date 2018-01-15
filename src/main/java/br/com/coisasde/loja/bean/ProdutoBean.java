@@ -12,18 +12,24 @@ import br.com.coisasde.loja.daos.novos.ProdutoDao;
 import br.com.coisasde.loja.daos.novos.SecaoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoProdutoPetDao;
+import br.com.coisasde.loja.daos.novos.TipoRacaoPetDao;
 import br.com.coisasde.loja.model.produto.Produto;
+import br.com.coisasde.loja.model.produto.novos.Renderizado;
 import br.com.coisasde.loja.model.produto.novos.SecaoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
+import br.com.coisasde.loja.moel.produtos.novos.TipoRacaoPet;
 
 @Named
 @RequestScoped
 public class ProdutoBean {
 	private Produto produto = new Produto();
-	private List<Integer> secoesPetId = new ArrayList<>();
-	private Integer tipoProdutoPetId = 0;
-	private List<Integer> tiposPetId = new ArrayList<>();
+	private List<Long> secoesPetId = new ArrayList<>();
+	private Long tipoProdutoPetId = 0L;
+	private List<Long> tiposPetId = new ArrayList<>();
+	private List<Long> tiposRacaoPetId = new ArrayList<>();
+
+
 
 	@Inject
 	private ProdutoDao produtoDao;
@@ -33,25 +39,34 @@ public class ProdutoBean {
 	private TipoProdutoPetDao tipoProdutoPetDao;
 	@Inject
 	private TipoPetDao tipoPetDao;
+	@Inject
+	private TipoRacaoPetDao tipoRacaoPetDao;
+
+	// Ajax
+	private Renderizado renderizado = new Renderizado();
 	
-	//Persistencia
+	// Persistencia
 	@Transactional
 	public void salvar() {
-		for(Integer secaoId : secoesPetId) {
+		for (Long secaoId : secoesPetId) {
 			produto.getSecoesPet().add(new SecaoPet(secaoId));
 		}
 		produto.setTipoProdutoPet(new TipoProdutoPet(tipoProdutoPetId));
-		for(Integer tipoPetId :tiposPetId) {
+		for (Long tipoPetId : tiposPetId) {
 			produto.getTiposPet().add(new TipoPet(tipoPetId));
+		}
+		for (Long tipoRacaoPetId : tiposRacaoPetId) {
+			produto.getTiposRacaoPet().add(new TipoRacaoPet(tipoRacaoPetId));
 		}
 		produtoDao.adiciona(produto);
 		this.produto = new Produto();
 		this.secoesPetId = new ArrayList<>();
-		this.tipoProdutoPetId = 0;
+		this.tipoProdutoPetId = 0L;
 		this.tiposPetId = new ArrayList<>();
+		this.tiposRacaoPetId = new ArrayList<>();
 
 	}
-	//Getters and Setters
+	// Getters and Setters
 
 	public Produto getProduto() {
 		return produto;
@@ -61,39 +76,58 @@ public class ProdutoBean {
 		this.produto = produto;
 	}
 
-
-	public List<Integer> getSecoesPetId() {
+	public List<Long> getSecoesPetId() {
 		return secoesPetId;
 	}
 
-	public void setSecoesPetId(List<Integer> secoesPetId) {
+	public void setSecoesPetId(List<Long> secoesPetId) {
 		this.secoesPetId = secoesPetId;
 	}
 
-	public Integer getTipoProdutoPetId() {
+	public Long getTipoProdutoPetId() {
 		return tipoProdutoPetId;
 	}
 
-	public void setTipoProdutoPetId(Integer tipoProdutoPetId) {
+	public void setTipoProdutoPetId(Long tipoProdutoPetId) {
 		this.tipoProdutoPetId = tipoProdutoPetId;
 	}
-	
-	public List<Integer> getTiposPetId() {
+
+	public List<Long> getTiposPetId() {
 		return tiposPetId;
 	}
 
-	public void setTiposPetId(List<Integer> tiposPetId) {
+	public void setTiposPetId(List<Long> tiposPetId) {
 		this.tiposPetId = tiposPetId;
+	}
+
+	public List<Long> getTiposRacaoPetId() {
+		return tiposRacaoPetId;
+	}
+
+	public void setTiposRacaoPetId(List<Long> tiposRacaoPetId) {
+		this.tiposRacaoPetId = tiposRacaoPetId;
 	}
 
 	// OUTROS
 	public List<SecaoPet> getSecoesPet() {
 		return secaoPetDao.listaTodos();
 	}
-	public List<TipoProdutoPet> getTiposProdutoPet(){
+
+	public List<TipoProdutoPet> getTiposProdutoPet() {
 		return tipoProdutoPetDao.listaTodos();
 	}
-	public List<TipoPet> getTiposPet(){
+
+	public List<TipoPet> getTiposPet() {
 		return tipoPetDao.listaTodos();
+	}
+
+	public List<TipoRacaoPet> getTiposRacaoPet() {
+		return tipoRacaoPetDao.listaTodos();
+	}
+	// Ajax
+	public boolean getTipoProdutoPetRenderizado() {
+		System.out.println("tipoProdutoPetId: " + tipoProdutoPetId);
+//		System.out.println("tipoProdutoPet: " + tipoProdutoPetDao.buscaPorId(new Long(tipoProdutoPetId)));
+		return renderizado.getTipoProdutoPet(tipoProdutoPetId, tipoProdutoPetDao);
 	}
 }

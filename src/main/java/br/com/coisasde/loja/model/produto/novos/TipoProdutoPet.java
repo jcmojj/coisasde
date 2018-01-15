@@ -13,7 +13,7 @@ public class TipoProdutoPet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nome;
 
 	@OneToOne(mappedBy="tipoProdutoPet")
@@ -24,7 +24,7 @@ public class TipoProdutoPet {
 		return "TipoProdutoPet [id=" + id + ", nome=" + nome + ", produto=" + produto + "]";
 	}
 	// Construtor
-	public TipoProdutoPet(Integer id) {
+	public TipoProdutoPet(Long id) {
 		super();
 		this.id = id;
 	}
@@ -39,11 +39,11 @@ public class TipoProdutoPet {
 	}
 	
 	//Getters and Setters
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

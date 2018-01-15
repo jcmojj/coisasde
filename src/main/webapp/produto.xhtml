@@ -30,34 +30,54 @@
 		<h:outputLabel value="Quantidade" />
 		<h:inputText value="#{produtoBean.produto.quantidade}" />
 	</div>
+
 	<div>
-		<h:outputLabel value="Secoes" />
-		<h:selectManyListbox value="#{produtoBean.secoesPetId}"
-			converter="javax.faces.Integer">
-			<f:selectItems value="#{produtoBean.secoesPet}" var="secaoPet"
-				itemValue="#{secaoPet.id}" itemLabel="#{secaoPet.nome}" />
-		</h:selectManyListbox>
+		<h:panelGroup id="tipoPet">
+			<h:outputLabel value="Tipo Pet" />
+			<h:selectManyListbox value="#{produtoBean.tiposPetId}"
+				converter="javax.faces.Long">
+				<f:selectItems value="#{produtoBean.tiposPet}" var="tipoPet"
+					itemValue="#{tipoPet.id}" itemLabel="#{tipoPet.nome}" />
+			</h:selectManyListbox>
+		</h:panelGroup>
 	</div>
 	<div>
-		<h:outputLabel value="Tipo Produto" />
-		<h:selectOneMenu value="#{produtoBean.tipoProdutoPetId}"
-			converter="javax.faces.Integer">
-			<f:selectItem itemValue="" itemLabel="Selecione uma empresa"/>
-			<f:selectItems value="#{produtoBean.tiposProdutoPet}" var="tipoProdutoPet"
-				itemValue="#{tipoProdutoPet.id}" itemLabel="#{tipoProdutoPet.nome}" />
-		</h:selectOneMenu>
+		<h:panelGroup id="secaoPet"
+			rendered="#{not empty produtoBean.tiposPetId}">
+			<h:outputLabel value="Secoes" />
+			<h:selectManyListbox value="#{produtoBean.secoesPetId}"
+				converter="javax.faces.Long">
+				<f:selectItems value="#{produtoBean.secoesPet}" var="secaoPet"
+					itemValue="#{secaoPet.id}" itemLabel="#{secaoPet.nome}" />
+			</h:selectManyListbox>
+		</h:panelGroup>
 	</div>
 	<div>
-		<h:outputLabel value="Tipo Pet" />
-		<h:selectManyListbox value="#{produtoBean.tiposPetId}"
-			converter="javax.faces.Integer">
-			<f:selectItems value="#{produtoBean.tiposPet}" var="tipoPet"
-				itemValue="#{tipoPet.id}" itemLabel="#{tipoPet.nome}" />
-		</h:selectManyListbox>
+		<h:panelGroup id="tipoProduto">
+			<h:outputLabel value="Tipo Produto" />
+			<h:selectOneMenu value="#{produtoBean.tipoProdutoPetId}"
+				converter="javax.faces.Long">
+				<f:ajax execute="@this" render="@form" />
+				<f:selectItem itemValue="#{0}" itemLabel="Selecione um tipo de Produto" />
+				<f:selectItems value="#{produtoBean.tiposProdutoPet}"
+					var="tipoProdutoPet" itemValue="#{tipoProdutoPet.id}"
+					itemLabel="#{tipoProdutoPet.nome}" />
+			</h:selectOneMenu>
+		</h:panelGroup>
 	</div>
 
-
-
+	<div>
+		<h:panelGroup id="tipoRacao">
+			<h:outputLabel value="Tipo Racao" />
+			<h:selectManyListbox value="#{produtoBean.tiposRacaoPetId}"
+				converter="javax.faces.Long"
+				rendered="#{produtoBean.tipoProdutoPetRenderizado}">
+				<f:selectItems value="#{produtoBean.tiposRacaoPet}"
+					var="tipoRacaoPet" itemValue="#{tipoRacaoPet.id}"
+					itemLabel="#{tipoRacaoPet.nome}" />
+			</h:selectManyListbox>
+		</h:panelGroup>
+	</div>
 	<h:commandButton value="Cadastrar" action="#{produtoBean.salvar}" />
 
 </h:form>
