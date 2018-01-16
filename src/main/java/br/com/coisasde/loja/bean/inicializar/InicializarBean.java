@@ -12,29 +12,41 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import br.com.coisasde.loja.daos.LogradouroDao;
 import br.com.coisasde.loja.daos.PaesciDao;
 import br.com.coisasde.loja.daos.TipoTelefoneDao;
+import br.com.coisasde.loja.daos.novos.EspecieAnfibioDao;
+import br.com.coisasde.loja.daos.novos.EspecieInsetoDao;
+import br.com.coisasde.loja.daos.novos.EspecieMamiferoDao;
+import br.com.coisasde.loja.daos.novos.EspeciePassaroDao;
 import br.com.coisasde.loja.daos.novos.EspeciePeixeDao;
+import br.com.coisasde.loja.daos.novos.EspecieReptilDao;
 import br.com.coisasde.loja.daos.novos.IdadePetDao;
 import br.com.coisasde.loja.daos.novos.NecessitaPreRenderizacaoDeDao;
 import br.com.coisasde.loja.daos.novos.PortePetDao;
+import br.com.coisasde.loja.daos.novos.RacaCachorroDao;
+import br.com.coisasde.loja.daos.novos.RacaGatoDao;
 import br.com.coisasde.loja.daos.novos.SecaoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoAbertoFechadoDao;
+import br.com.coisasde.loja.daos.novos.TipoAguaDoceSalgadaDao;
 import br.com.coisasde.loja.daos.novos.TipoNovoUsadoDao;
 import br.com.coisasde.loja.daos.novos.TipoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoProdutoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoRacaoPetDao;
+import br.com.coisasde.loja.model.produto.novos.EspecieAnfibio;
+import br.com.coisasde.loja.model.produto.novos.EspecieInseto;
+import br.com.coisasde.loja.model.produto.novos.EspecieMamifero;
+import br.com.coisasde.loja.model.produto.novos.EspeciePassaro;
+import br.com.coisasde.loja.model.produto.novos.EspeciePeixe;
+import br.com.coisasde.loja.model.produto.novos.EspecieReptil;
 import br.com.coisasde.loja.model.produto.novos.IdadePet;
 import br.com.coisasde.loja.model.produto.novos.NecessitaPreRenderizacaoDe;
 import br.com.coisasde.loja.model.produto.novos.PortePet;
+import br.com.coisasde.loja.model.produto.novos.RacaCachorro;
+import br.com.coisasde.loja.model.produto.novos.RacaGato;
 import br.com.coisasde.loja.model.produto.novos.SecaoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoAbertoFechado;
+import br.com.coisasde.loja.model.produto.novos.TipoAguaDoceSalgada;
 import br.com.coisasde.loja.model.produto.novos.TipoNovoUsado;
 import br.com.coisasde.loja.model.produto.novos.TipoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
@@ -60,6 +72,15 @@ public class InicializarBean {
 		tipoAbertoFechado();
 		portePet();
 		idadePet();
+		especieAnfibio();
+		especieInseto();
+		especieMamifero();
+		tipoAguaDoceSalgada();
+		especiePeixe();
+		especiePassaro();
+		especieReptil();
+		racaCachorro();
+		racaGato();
 	}
 
 	@Inject
@@ -410,11 +431,232 @@ public class InicializarBean {
 	}
 
 	@Inject
+	private EspecieAnfibioDao especieAnfibioDao;
+
+	public void especieAnfibio()  {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/especieAnfibio");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String especieAnfibio = br.readLine();
+
+			while (especieAnfibio != null) {
+
+				especieAnfibioDao.adiciona(new EspecieAnfibio(especieAnfibio));
+
+				especieAnfibio = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Inject
+	private EspecieInsetoDao especieInsetoDao;
+
+	public void especieInseto()  {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/especieInseto");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String especieInseto = br.readLine();
+
+			while (especieInseto != null) {
+
+				especieInsetoDao.adiciona(new EspecieInseto(especieInseto));
+
+				especieInseto = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Inject
+	private EspecieMamiferoDao especieMamiferoDao;
+
+	public void especieMamifero()  {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/especieMamifero");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String especieMamifero = br.readLine();
+
+			while (especieMamifero != null) {
+
+				especieMamiferoDao.adiciona(new EspecieMamifero(especieMamifero));
+
+				especieMamifero = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Inject
+	private EspeciePassaroDao especiePassaroDao;
+
+	public void especiePassaro()  {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/especiePassaro");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String especiePassaro = br.readLine();
+
+			while (especiePassaro != null) {
+
+				especiePassaroDao.adiciona(new EspeciePassaro(especiePassaro));
+
+				especiePassaro = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Inject
+	private EspecieReptilDao especieReptilDao;
+
+	public void especieReptil()  {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/especieReptil");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String especieReptil = br.readLine();
+
+			while (especieReptil != null) {
+
+				especieReptilDao.adiciona(new EspecieReptil(especieReptil));
+
+				especieReptil = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	@Inject
+	private TipoAguaDoceSalgadaDao tipoAguaDoceSalgadaDao;
+
+	@Transactional
+	public void tipoAguaDoceSalgada() {
+		tipoAguaDoceSalgadaDao.adiciona(new TipoAguaDoceSalgada("Água Doce"));
+		tipoAguaDoceSalgadaDao.adiciona(new TipoAguaDoceSalgada("Água Salgada"));
+	}
+
+	
+	
+	@Inject
 	private EspeciePeixeDao especiePeixeDao;
 
 	public void especiePeixe()  {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/especiePeixe");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String linha = br.readLine();
+			String especiePeixeString;
+			EspeciePeixe especiePeixe ;
+			TipoAguaDoceSalgada tipoAguaDoceSalgada;
+			
+			while (linha != null) {
+				especiePeixeString = linha.substring(0, linha.indexOf(";"));
+				especiePeixe = new EspeciePeixe(especiePeixeString);
+				if(linha.indexOf("doce") == -1) { // É SALGADA
+					// FAZER QUERY PRA ACHAR AGUA DOCE E NAO FICA DEPENDENDEND DE CÓDIGO NAO RELACIONADO
+					tipoAguaDoceSalgada = new TipoAguaDoceSalgada(2L);
+				}else {
+					tipoAguaDoceSalgada = new TipoAguaDoceSalgada(1L);
+				}
+				
+				especiePeixe.setTipoAguaDoceSalgada(tipoAguaDoceSalgada);
+				especiePeixeDao.adiciona(new EspeciePeixe(especiePeixeString));
 
+				linha = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
+	@Inject
+	private RacaCachorroDao racaCachorroDao;
+
+	public void racaCachorro()  {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/racaCachorro");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String racaCachorro = br.readLine();
+
+			while (racaCachorro != null) {
+
+				racaCachorroDao.adiciona(new RacaCachorro(racaCachorro));
+
+				racaCachorro = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Inject
+	private RacaGatoDao racaGatoDao;
+
+	public void racaGato()  {
+		try {
+			InputStream is = new FileInputStream(
+					"/Users/josecarlosoliveira/javaee/eclipse-workspace/coisasde/target/classes/br/com/coisasde/loja/model/produto/novos/racaGato");
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+			String racaGato = br.readLine();
+
+			while (racaGato != null) {
+
+				racaGatoDao.adiciona(new RacaGato(racaGato));
+
+				racaGato = br.readLine();
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

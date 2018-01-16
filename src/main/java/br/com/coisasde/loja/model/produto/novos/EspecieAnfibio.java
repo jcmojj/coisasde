@@ -1,3 +1,4 @@
+
 package br.com.coisasde.loja.model.produto.novos;
 
 import java.io.Serializable;
@@ -8,12 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 
 import br.com.coisasde.loja.model.produto.Produto;
 
 @Entity
-public class EspeciePeixe implements Serializable {
+public class EspecieAnfibio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -22,28 +22,23 @@ public class EspeciePeixe implements Serializable {
 	private String nome;
 	@ManyToMany
 	private List<Produto> produtos;
-	@OneToOne
-	private TipoAguaDoceSalgada tipoAguaDoceSalgada;
-
-
 
 	@Override
 	public String toString() {
-		return "EspeciePeixe [id=" + id + ", nome=" + nome + ", produtos=" + produtos + ", tipoAguaDoceSalgada="
-				+ tipoAguaDoceSalgada + "]";
+		return "EspecieRoedor [id=" + id + ", nome=" + nome + ", produtos=" + produtos + "]";
 	}
 
 	// Constructor
-	public EspeciePeixe() {
+	public EspecieAnfibio() {
 		super();
 	}
 
-	public EspeciePeixe(Long id) {
+	public EspecieAnfibio(Long id) {
 		super();
 		this.id = id;
 	}
 
-	public EspeciePeixe(String nome) {
+	public EspecieAnfibio(String nome) {
 		super();
 		this.nome = nome;
 	}
@@ -72,14 +67,5 @@ public class EspeciePeixe implements Serializable {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
-
-	public TipoAguaDoceSalgada getTipoAguaDoceSalgada() {
-		return tipoAguaDoceSalgada;
-	}
-
-	public void setTipoAguaDoceSalgada(TipoAguaDoceSalgada tipoAguaDoceSalgada) {
-		this.tipoAguaDoceSalgada = tipoAguaDoceSalgada;
-	}
-	
 
 }
