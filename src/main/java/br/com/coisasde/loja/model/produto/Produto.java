@@ -13,7 +13,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import br.com.coisasde.loja.model.produto.novos.IdadePet;
+import br.com.coisasde.loja.model.produto.novos.Marca;
+import br.com.coisasde.loja.model.produto.novos.PortePet;
+import br.com.coisasde.loja.model.produto.novos.RacaCachorro;
+import br.com.coisasde.loja.model.produto.novos.RacaGato;
 import br.com.coisasde.loja.model.produto.novos.SecaoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoAbertoFechado;
+import br.com.coisasde.loja.model.produto.novos.TipoNovoUsado;
 import br.com.coisasde.loja.model.produto.novos.TipoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoRacaoPet;
@@ -38,12 +45,33 @@ public class Produto implements Serializable {
 	private List<TipoPet> tiposPet = new ArrayList<>();
 	@ManyToMany
 	private List<TipoRacaoPet> tiposRacaoPet = new ArrayList<>();
+	@OneToOne
+	private TipoNovoUsado tipoNovoUsado;
+	@OneToOne
+	private TipoAbertoFechado tipoAbertoFechado;
+	@OneToOne
+	private Marca marca;
+	@ManyToMany
+	private List<IdadePet> idadesPet = new ArrayList<>();
+	@ManyToMany
+	private List<PortePet> portesPet = new ArrayList<>();
+	@ManyToMany
+	private List<RacaCachorro> racasCachorro = new ArrayList<>();
+	@ManyToMany
+	private List<RacaGato> racasGato = new ArrayList<>();
+
+
+
+
+
 
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco
 				+ ", quantidade=" + quantidade + ", secoesPet=" + secoesPet + ", tipoProdutoPet=" + tipoProdutoPet
-				+ ", tiposPet=" + tiposPet + ", tiposRacaoPet=" + tiposRacaoPet + "]";
+				+ ", tiposPet=" + tiposPet + ", tiposRacaoPet=" + tiposRacaoPet + ", tipoNovoUsado=" + tipoNovoUsado
+				+ ", tipoAbertoFechado=" + tipoAbertoFechado + ", marca=" + marca + ", idadesPet=" + idadesPet
+				+ ", portesPet=" + portesPet + ", racasCachorro=" + racasCachorro + ", racasGato=" + racasGato + "]";
 	}
 
 	public Integer getId() {
@@ -116,6 +144,61 @@ public class Produto implements Serializable {
 
 	public void setTiposRacaoPet(List<TipoRacaoPet> tiposRacaoPet) {
 		this.tiposRacaoPet = tiposRacaoPet;
+	}
+
+	public TipoNovoUsado getTipoNovoUsado() {
+		return tipoNovoUsado;
+	}
+
+	public void setTipoNovoUsado(TipoNovoUsado tipoNovoUsado) {
+		this.tipoNovoUsado = tipoNovoUsado;
+	}
+
+	public TipoAbertoFechado getTipoAbertoFechado() {
+		return tipoAbertoFechado;
+	}
+
+	public void setTipoAbertoFechado(TipoAbertoFechado tipoAbertoFechado) {
+		this.tipoAbertoFechado = tipoAbertoFechado;
+	}
+
+	public List<IdadePet> getIdadesPet() {
+		return idadesPet;
+	}
+
+	public void setIdadesPet(List<IdadePet> idadesPet) {
+		this.idadesPet = idadesPet;
+	}
+
+	public List<PortePet> getPortesPet() {
+		return portesPet;
+	}
+
+	public void setPortesPet(List<PortePet> portesPet) {
+		this.portesPet = portesPet;
+	}
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	public List<RacaCachorro> getRacasCachorro() {
+		return racasCachorro;
+	}
+
+	public void setRacasCachorro(List<RacaCachorro> racasCachorro) {
+		this.racasCachorro = racasCachorro;
+	}
+
+	public List<RacaGato> getRacasGato() {
+		return racasGato;
+	}
+
+	public void setRacasGato(List<RacaGato> racasGato) {
+		this.racasGato = racasGato;
 	}
 
 }

@@ -10,9 +10,9 @@ public class Renderizado {
 //		return renderizar;
 //	}
 	
-	public boolean getTipoRacaoRenderizado(Long tipoProdutoPetId, TipoProdutoPetDao tipoProdutoPetDao, NecessitaPreRenderizacaoDeDao necessitaPreRenderizacaoDeDao) {
-		NecessitaPreRenderizacaoDe necessitaPreRenderizacaoDe = necessitaPreRenderizacaoDeDao.buscaPorId(tipoProdutoPetId);
-//		necessitaPreRenderizacaoDe.
+//	public boolean getTipoRacaoRenderizado(Long tipoProdutoPetId, TipoProdutoPetDao tipoProdutoPetDao, NecessitaPreRenderizacaoDeDao necessitaPreRenderizacaoDeDao) {
+//		NecessitaPreRenderizacaoDe necessitaPreRenderizacaoDe = necessitaPreRenderizacaoDeDao.buscaPorId(tipoProdutoPetId);
+////		necessitaPreRenderizacaoDe.
 		
 //		boolean renderizar = false;
 //		if(tipoProdutoPetId != 0L && tipoProdutoPetId != null) {
@@ -25,7 +25,7 @@ public class Renderizado {
 //			case "Petisco": renderizar = true;
 //			}	
 //		}
-		return necessitaPreRenderizacaoDe.getTipoRacao();
-	}
+//		return necessitaPreRenderizacaoDe.getTipoRacao();
+//	}
 
 }

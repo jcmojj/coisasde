@@ -8,15 +8,23 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
+import br.com.coisasde.loja.daos.novos.IdadePetDao;
 import br.com.coisasde.loja.daos.novos.NecessitaPreRenderizacaoDeDao;
+import br.com.coisasde.loja.daos.novos.PortePetDao;
 import br.com.coisasde.loja.daos.novos.ProdutoDao;
 import br.com.coisasde.loja.daos.novos.SecaoPetDao;
+import br.com.coisasde.loja.daos.novos.TipoAbertoFechadoDao;
+import br.com.coisasde.loja.daos.novos.TipoNovoUsadoDao;
 import br.com.coisasde.loja.daos.novos.TipoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoProdutoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoRacaoPetDao;
 import br.com.coisasde.loja.model.produto.Produto;
+import br.com.coisasde.loja.model.produto.novos.IdadePet;
 import br.com.coisasde.loja.model.produto.novos.NecessitaPreRenderizacaoDe;
+import br.com.coisasde.loja.model.produto.novos.PortePet;
 import br.com.coisasde.loja.model.produto.novos.SecaoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoAbertoFechado;
+import br.com.coisasde.loja.model.produto.novos.TipoNovoUsado;
 import br.com.coisasde.loja.model.produto.novos.TipoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoRacaoPet;
@@ -29,6 +37,10 @@ public class ProdutoBean {
 	private Long tipoProdutoPetId = 0L;
 	private List<Long> tiposPetId = new ArrayList<>();
 	private List<Long> tiposRacaoPetId = new ArrayList<>();
+	private Long tipoNovoUsadoId = 0L;
+	private Long tipoAbertoFechadoId = 0L;
+	private List<Long> idadesPetId = new ArrayList<>();
+	private List <Long> portesPetId = new ArrayList<>();
 
 
 
@@ -44,6 +56,14 @@ public class ProdutoBean {
 	private TipoRacaoPetDao tipoRacaoPetDao;
 	@Inject
 	private NecessitaPreRenderizacaoDeDao necessitaPreRenderizacaoDeDao;
+	@Inject
+	private TipoNovoUsadoDao tipoNovoUsadoDao;
+	@Inject
+	private TipoAbertoFechadoDao tipoAbertoFechadoDao;
+	@Inject
+	private IdadePetDao idadePetDao;
+	@Inject
+	private PortePetDao portePetDao;
 
 //	// Ajax
 //	private Renderizado renderizado = new Renderizado();
@@ -61,12 +81,24 @@ public class ProdutoBean {
 		for (Long tipoRacaoPetId : tiposRacaoPetId) {
 			produto.getTiposRacaoPet().add(new TipoRacaoPet(tipoRacaoPetId));
 		}
+		produto.setTipoNovoUsado(new TipoNovoUsado(tipoNovoUsadoId));
+		produto.setTipoAbertoFechado(new TipoAbertoFechado(tipoAbertoFechadoId));
+		for (Long idadePetId : idadesPetId) {
+			produto.getIdadesPet().add(new IdadePet(idadePetId));
+		}
+		for (Long portePetId : portesPetId) {
+			produto.getPortesPet().add(new PortePet(portePetId));
+		}
 		produtoDao.adiciona(produto);
 		this.produto = new Produto();
 		this.secoesPetId = new ArrayList<>();
 		this.tipoProdutoPetId = 0L;
 		this.tiposPetId = new ArrayList<>();
 		this.tiposRacaoPetId = new ArrayList<>();
+		this.tipoNovoUsadoId = 0L;
+		this.tipoAbertoFechadoId = 0L;
+		this.idadesPetId = new ArrayList<>();
+		this.portesPetId = new ArrayList<>();
 
 	}
 	// Getters and Setters
@@ -109,6 +141,39 @@ public class ProdutoBean {
 
 	public void setTiposRacaoPetId(List<Long> tiposRacaoPetId) {
 		this.tiposRacaoPetId = tiposRacaoPetId;
+		
+	}
+
+	public Long getTipoNovoUsadoId() {
+		return tipoNovoUsadoId;
+	}
+
+	public void setTipoNovoUsadoId(Long tipoNovoUsadoId) {
+		this.tipoNovoUsadoId = tipoNovoUsadoId;
+	}
+	
+
+	public Long getTipoAbertoFechadoId() {
+		return tipoAbertoFechadoId;
+	}
+	public void setTipoAbertoFechadoId(Long tipoAbertoFechadoId) {
+		this.tipoAbertoFechadoId = tipoAbertoFechadoId;
+	}
+	
+	public List<Long> getIdadesPetId() {
+		return idadesPetId;
+	}
+
+	public void setIdadesPetId(List<Long> idadesPetId) {
+		this.idadesPetId = idadesPetId;
+	}
+
+	public List<Long> getPortesPetId() {
+		return portesPetId;
+	}
+
+	public void setPortesPetId(List<Long> portesPetId) {
+		this.portesPetId = portesPetId;
 	}
 
 	// OUTROS
@@ -127,16 +192,24 @@ public class ProdutoBean {
 	public List<TipoRacaoPet> getTiposRacaoPet() {
 		return tipoRacaoPetDao.listaTodos();
 	}
+	public List<TipoNovoUsado> getTiposNovoUsado(){
+		return tipoNovoUsadoDao.listaTodos();
+	}
+	public List<TipoAbertoFechado> getTiposAbertoFechado(){
+		return tipoAbertoFechadoDao.listaTodos();
+	}
+	public List<IdadePet> getIdadesPet(){
+		return idadePetDao.listaTodos();
+	}
+	public List<PortePet> getPortesPet(){
+		return portePetDao.listaTodos();
+	}
 	// Ajax
 	public boolean getTipoRacaoRenderizado() {
-		System.out.println("tipoProdutoPetId: " + tipoProdutoPetId);
-//		System.out.println("tipoProdutoPet: " + tipoProdutoPetDao.buscaPorId(new Long(tipoProdutoPetId)));
-//		return renderizado.getTipoRacaoRenderizado(tipoProdutoPetId, tipoProdutoPetDao, necessitaPreRenderizacaoDeDao);
 		if(tipoProdutoPetId == 0) {
 			return false;
 		}
 		NecessitaPreRenderizacaoDe necessitaPreRenderizacaoDe = necessitaPreRenderizacaoDeDao.buscaPorId(tipoProdutoPetId);
-		System.out.println(necessitaPreRenderizacaoDe);
 		return necessitaPreRenderizacaoDe.getTipoRacaoPet();
 	}
 }
