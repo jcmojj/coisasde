@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 import br.com.coisasde.loja.model.produto.Produto;
 
 @Entity
-public class EspecieRoedor implements Serializable {
+public class EspecieMamifero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,16 +29,16 @@ public class EspecieRoedor implements Serializable {
 	}
 
 	// Constructor
-	public EspecieRoedor() {
+	public EspecieMamifero() {
 		super();
 	}
 
-	public EspecieRoedor(Long id) {
+	public EspecieMamifero(Long id) {
 		super();
 		this.id = id;
 	}
 
-	public EspecieRoedor(String nome) {
+	public EspecieMamifero(String nome) {
 		super();
 		this.nome = nome;
 	}
