@@ -1,53 +1,54 @@
-Ração Seca
-Ração em Latas e Saches
-Ossinho
-Petisco
-Comedouro
-Bebedouro
-Colônia
-Shampoo
-Condicionador
-Banho Seco
-Higiene Bucal
-Limpeza do Ouvido
-Sabão / Sabonete
-Fralda Higienica
-Tapete Higiênico
-Lenço Higienico
-Coletor de Fezes
-Eliminador de Odores
-Porta Racao
-Seca Xixi
-Ração Medicamentosa
-Antibiótico
-Anti-inflamatório
-Antipulgas
-Colar Elizabetano
-Floral
-Regenerador Articular
-Roupinha Pós-Cirurgica
-Shampoo Medicamentoso
-Vermífugo
-Vitaminas e Suplementos
-Outros Produtos
-Antilatido
-Educador / Repelente
-Adestramento
-Coleira
-Enforcador
-Peitoral
-Guias
-Focinheira
-Caixa de Transporte
-Adaptador para Cinto de Segurança
-Assento/Capas para Bancos
-Casinha
-Caminha
-Colchões
-Cama-Toca
-Tapetes
-Bolinhas
-Corda
-Pelúcia
-Ossinhos
-Outros Produtos
+tipoProdutoPet						tipoPet secaoPet		tipoRacao
+Ração Seca;							false	false		true				
+Ração em Latas e Saches;				false	false		true			
+Ossinho;								false	false		true			
+Petisco;								false	false		true			
+Comedouro;							false	false		false		
+Bebedouro;							false	false		false		
+Colônia;								false	false		false		
+Shampoo;								false	false		false		
+Condicionador;						false	false		false		
+Banho Seco;							false	false		false		
+Higiene Bucal;						false	false		false		
+Limpeza do Ouvido;					false	false		false		
+Sabão / Sabonete;					false	false		false		
+Fralda Higienica;					false	false		false		
+Tapete Higiênico;					false	false		false		
+Lenço Higienico;						false	false		false		
+Coletor de Fezes;					false	false		false		
+Eliminador de Odores;				false	false		false		
+Porta Racao;							false	false		false		
+Seca Xixi;							false	false		false		
+Ração Medicamentosa;					false	false		false		
+Antibiótico;							false	false		false		
+Anti-inflamatório;					false	false		false		
+Antipulgas;							false	false		false		
+Colar Elizabetano;					false	false		false		
+Floral;								false	false		false		
+Regenerador Articular;				false	false		false		
+Roupinha Pós-Cirurgica;				false	false		false		
+Shampoo Medicamentoso;				false	false		false		
+Vermífugo;							false	false		false		
+Vitaminas e Suplementos;				false	false		false		
+Outros Produtos;						false	false		false		
+Antilatido;							false	false		false		
+Educador / Repelente;				false	false		false		
+Adestramento;						false	false		false		
+Coleira;								false	false		false		
+Enforcador;							false	false		false		
+Peitoral;							false	false		false		
+Guias;								false	false		false		
+Focinheira;							false	false		false		
+Caixa de Transporte;					false	false		false		
+Adaptador para Cinto de Segurança;	false	false		false		
+Assento/Capas para Bancos;			false	false		false		
+Casinha;								false	false		false		
+Caminha;								false	false		false		
+Colchões;							false	false		false		
+Cama-Toca;							false	false		false		
+Tapetes;								false	false		false		
+Bolinhas;							false	false		false		
+Corda;								false	false		false		
+Pelúcia;								false	false		false		
+Ossinhos;							false	false		false		
+Outros Produtos;						false	false		false		

@@ -8,17 +8,18 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
+import br.com.coisasde.loja.daos.novos.NecessitaPreRenderizacaoDeDao;
 import br.com.coisasde.loja.daos.novos.ProdutoDao;
 import br.com.coisasde.loja.daos.novos.SecaoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoProdutoPetDao;
 import br.com.coisasde.loja.daos.novos.TipoRacaoPetDao;
 import br.com.coisasde.loja.model.produto.Produto;
-import br.com.coisasde.loja.model.produto.novos.Renderizado;
+import br.com.coisasde.loja.model.produto.novos.NecessitaPreRenderizacaoDe;
 import br.com.coisasde.loja.model.produto.novos.SecaoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
-import br.com.coisasde.loja.moel.produtos.novos.TipoRacaoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoRacaoPet;
 
 @Named
 @RequestScoped
@@ -41,9 +42,11 @@ public class ProdutoBean {
 	private TipoPetDao tipoPetDao;
 	@Inject
 	private TipoRacaoPetDao tipoRacaoPetDao;
+	@Inject
+	private NecessitaPreRenderizacaoDeDao necessitaPreRenderizacaoDeDao;
 
-	// Ajax
-	private Renderizado renderizado = new Renderizado();
+//	// Ajax
+//	private Renderizado renderizado = new Renderizado();
 	
 	// Persistencia
 	@Transactional
@@ -125,9 +128,15 @@ public class ProdutoBean {
 		return tipoRacaoPetDao.listaTodos();
 	}
 	// Ajax
-	public boolean getTipoProdutoPetRenderizado() {
+	public boolean getTipoRacaoRenderizado() {
 		System.out.println("tipoProdutoPetId: " + tipoProdutoPetId);
 //		System.out.println("tipoProdutoPet: " + tipoProdutoPetDao.buscaPorId(new Long(tipoProdutoPetId)));
-		return renderizado.getTipoProdutoPet(tipoProdutoPetId, tipoProdutoPetDao);
+//		return renderizado.getTipoRacaoRenderizado(tipoProdutoPetId, tipoProdutoPetDao, necessitaPreRenderizacaoDeDao);
+		if(tipoProdutoPetId == 0) {
+			return false;
+		}
+		NecessitaPreRenderizacaoDe necessitaPreRenderizacaoDe = necessitaPreRenderizacaoDeDao.buscaPorId(tipoProdutoPetId);
+		System.out.println(necessitaPreRenderizacaoDe);
+		return necessitaPreRenderizacaoDe.getTipoRacaoPet();
 	}
 }

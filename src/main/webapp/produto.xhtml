@@ -71,7 +71,7 @@
 			<h:outputLabel value="Tipo Racao" />
 			<h:selectManyListbox value="#{produtoBean.tiposRacaoPetId}"
 				converter="javax.faces.Long"
-				rendered="#{produtoBean.tipoProdutoPetRenderizado}">
+				rendered="#{produtoBean.tipoRacaoRenderizado}">
 				<f:selectItems value="#{produtoBean.tiposRacaoPet}"
 					var="tipoRacaoPet" itemValue="#{tipoRacaoPet.id}"
 					itemLabel="#{tipoRacaoPet.nome}" />

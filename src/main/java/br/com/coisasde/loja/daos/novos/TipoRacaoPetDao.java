@@ -3,7 +3,7 @@ package br.com.coisasde.loja.daos.novos;
 import javax.ejb.Stateless;
 
 import br.com.coisasde.loja.daos.Dao;
-import br.com.coisasde.loja.moel.produtos.novos.TipoRacaoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoRacaoPet;
 
 @Stateless
 public class TipoRacaoPetDao extends Dao<TipoRacaoPet> {

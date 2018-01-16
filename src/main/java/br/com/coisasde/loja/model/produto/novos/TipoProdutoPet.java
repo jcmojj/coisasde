@@ -15,6 +15,8 @@ public class TipoProdutoPet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	@OneToOne(mappedBy = "tipoProdutoPet")
+	private NecessitaPreRenderizacaoDe necessitaPreRenderizacaoDe;
 
 	@OneToOne(mappedBy="tipoProdutoPet")
 	private Produto produto;

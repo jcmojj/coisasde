@@ -1,4 +1,4 @@
-package br.com.coisasde.loja.moel.produtos.novos;
+package br.com.coisasde.loja.model.produto.novos;
 
 import java.util.List;
 

@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 import br.com.coisasde.loja.model.produto.novos.SecaoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoPet;
 import br.com.coisasde.loja.model.produto.novos.TipoProdutoPet;
-import br.com.coisasde.loja.moel.produtos.novos.TipoRacaoPet;
+import br.com.coisasde.loja.model.produto.novos.TipoRacaoPet;
 
 @Entity
 public class Produto implements Serializable {
